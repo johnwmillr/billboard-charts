@@ -29,6 +29,20 @@ class DateTest(unittest.TestCase):
         self.assertEqual(chart.date, "1961-12-25")
         self.assertEqual(chart.nextDate, "1962-01-06")
 
+        chart = billboard.ChartData("hot-100", date="1961-12-25")
+        self.assertEqual(chart.date, "1961-12-25")
+        self.assertEqual(chart.nextDate, "1962-01-06")
+
+        chart = billboard.ChartData("country-songs", date="1958-10-20")
+        self.assertEqual(chart.date, "1958-10-20")
+        self.assertEqual(chart.nextDate, "1958-10-27")
+        self.assertEqual(chart.previousDate, "")
+
+        chart = billboard.ChartData("country-streaming-songs", date="2020-10-31")
+        self.assertEqual(chart.date, "2020-10-31")
+        self.assertEqual(chart.nextDate, "")
+        self.assertEqual(chart.previousDate, "2020-10-24")
+
     def testDatetimeDate(self):
         """Checks that ChartData correctly handles datetime objects as the
         date parameter.
